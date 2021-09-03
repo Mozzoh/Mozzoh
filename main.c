@@ -9,6 +9,8 @@
 //#include <GL/glut.h>
 //#endif
 #include <GLFW/glfw3.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 
 void processInput(GLFWwindow *window)
@@ -53,6 +55,13 @@ int main(int argc, char const *argv[])
   {
       printf("%s\n", "Failed to initialize GLAD");
       return -1;
+  }
+
+  FT_Library ft;
+
+  if(FT_Init_FreeType(&ft)) {
+    fprintf(stderr, "Could not init freetype library\n");
+    return 1;
   }
 
   // Main loop

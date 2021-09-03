@@ -31,12 +31,14 @@ endif()
 
 add_subdirectory(external/glfw/)
 add_subdirectory(external/glad/)
+add_subdirectory(external/freetype/)
 
 #project source code paths
 target_include_directories(${PROJECT_NAME}
   PUBLIC Adder
   PUBLIC external/glfw/include/
   PUBLIC external/glad/include/
+  PUBLIC external/freetype/include/
 )
 
 #how to include GTK or other GUI libs
@@ -46,7 +48,8 @@ target_link_directories(${PROJECT_NAME}
   PRIVATE Adder
   PRIVATE external/glfw/src/
   PRIVATE external/glad/src/
+  PRIVATE external/freetype/src/
 )
 
 #leave of the lib part and the .a part (may not need number at end off glfw3)
-target_link_libraries(${PROJECT_NAME} adder glfw glad)
+target_link_libraries(${PROJECT_NAME} adder glfw glad freetype)

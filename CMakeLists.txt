@@ -2,9 +2,14 @@ cmake_minimum_required(VERSION 3.20.5)
 
 #${CMAKE_CXX_COMPILER} "/usr/bin/g++"
 
-project(HLIB)
+#ADD VERSIONING 
+project(HLIB VERSION 1.0)
+
+configure_file(HLIBConfig.h.in HLIBConfig.h)
 
 add_executable(${PROJECT_NAME} main.cpp)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 
 add_subdirectory(Adder)
 

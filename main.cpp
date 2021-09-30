@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <adder.h>
+#include <adder.hpp>
 
 #include <glad/glad.h>
 //#ifdef __APPLE__

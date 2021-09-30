@@ -6,7 +6,8 @@
                 "${default}",
                 "${workspaceFolder}/Adder",
                 "${workspaceFolder}/out/build/external/glad/include",
-                "${workspaceFolder}/external/glfw/include"
+                "${workspaceFolder}/external/glfw/include",
+                "${workspaceFolder}/out/build/external/glad/include"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",

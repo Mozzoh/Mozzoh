@@ -30,6 +30,7 @@ int main(int argc, char const *argv[])
     //printf("\n");
     //printf("Testing add: %5.2f\n", add(1.3f, 77.6f));
 
+    std::cout << "change\n";
     std::cout << argv[0] << " Version " << HLIB_VERSION_MAJOR << "." << HLIB_VERSION_MINOR << '\n';
 
 

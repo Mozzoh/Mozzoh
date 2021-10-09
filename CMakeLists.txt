@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.20.5)
 
-#${CMAKE_CXX_COMPILER} "/usr/bin/g++"
-
 #ADD VERSIONING 
 project(HLIB VERSION 1.0)
 
@@ -37,9 +35,14 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/external/glfw/CMakeLists.txt")
  message(FATAL_ERROR "The glfw submodules was not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 endif()
 
+#find_library(MY_ADDER_LIBRARY adder PATHS ${PROJECT_SOURCE_DIR}/out/build/Adder)
+#message(STATUS "MY_ADDER_LIBRARY: " ${MY_ADDER_LIBRARY})
+
+
 add_subdirectory(external/glfw/)
 add_subdirectory(external/glad/)
 #add_subdirectory(external/freetype/)
+
 
 #project source code paths
 target_include_directories(${PROJECT_NAME}
@@ -49,15 +52,22 @@ target_include_directories(${PROJECT_NAME}
   #PUBLIC external/freetype/include/
 )
 
-#how to include GTK or other GUI libs
-#/usr/include/ ???
+
+#Is this the correct way to do this
+#target_link_directories: Don’t use, give full paths instead (CMake 3.13+)
 #paths to libs (from build folder)
-target_link_directories(${PROJECT_NAME}
-  PRIVATE Adder
-  PRIVATE external/glfw/src/
-  PRIVATE external/glad/src/
+#target_link_directories(${PROJECT_NAME}
+  #PRIVATE Adder
+  #PRIVATE external/glfw/src/
+  #PRIVATE external/glad/src/
   #PRIVATE external/freetype/src/
-)
+#)
+
+
+
+#How does this work without using find_library or target_link_directories
+#maybe because adder included using the add_library(adder adder.cpp adder.hpp)
+#and is part of this project, otherwise find_library/find_package would be needed.
 
 #leave of the lib part and the .a part (may not need number at end off glfw3)
 target_link_libraries(${PROJECT_NAME} adder glfw glad)
